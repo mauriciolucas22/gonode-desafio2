@@ -27,8 +27,6 @@ app.set('view engine', 'html');
 app.use(express.static(path.resolve('app', 'views')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.render('signin');
-});
+app.use('/', routes);
 
 app.listen(PORT, HOST);
