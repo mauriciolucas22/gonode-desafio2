@@ -16,6 +16,7 @@ module.exports = {
 
     // verifica se email já existe
     if (await User.findOne({ where: { email } })) {
+      req.flash('error', 'Email já cadastrado');
       return res.redirect('back');
     }
 
@@ -27,6 +28,7 @@ module.exports = {
       password,
     });
 
+    req.flash('success', 'Usuário cadastrado');
     return res.redirect('/');
   },
 };
