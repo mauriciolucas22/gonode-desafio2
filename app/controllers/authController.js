@@ -52,7 +52,7 @@ module.exports = {
     req.session.user = user;
 
     return req.session.save(() => {
-      res.redirect('/dashboard');
+      res.redirect('dashboard');
     });
   },
 };

@@ -3,6 +3,7 @@ const express = require('express');
 const routes = express.Router();
 
 const authController = require('./controllers/authController');
+const dashboardController = require('./controllers/dashboardController');
 
 // middleware usado para enviar flash para todas as rotas
 routes.get((req, res, next) => {
@@ -12,10 +13,21 @@ routes.get((req, res, next) => {
   next();
 });
 
+/**
+ * login e signup
+ */
 routes.get('/', authController.signin);
 routes.get('/signup', authController.signup);
 
+/**
+ * Auth
+ */
 routes.post('/register', authController.register);
 routes.post('/authenticate', authController.authenticate);
+
+/**
+ * Dashboard
+ */
+routes.get('/dashboard', dashboardController.index);
 
 module.exports = routes;
