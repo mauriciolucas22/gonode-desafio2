@@ -5,8 +5,18 @@ const path = require('path');
 
 const app = express();
 
+const routes = require('./app/routes');
+
 const PORT = 3000;
 const HOST = '127.0.0.1';
+
+// const { User } = require('./app/models');
+
+/* User.create({
+  name: 'Jesus',
+  email: 'jesus@jesus.com',
+  password: '123',
+}); */
 
 nunjucks.configure(path.resolve('app', 'views'), {
   autoescape: true,
