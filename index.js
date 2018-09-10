@@ -26,7 +26,7 @@ nunjucks.configure(path.resolve('app', 'views'), {
   express: app,
 });
 
-app.set('view engine', 'html');
+app.set('view engine', 'njk');
 app.use(express.static(path.resolve('app', 'views')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionConfig));

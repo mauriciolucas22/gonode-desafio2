@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Docfy</title>
+{% extends 'layouts/default.njk' %}
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+{% block body %}
   <div class="auth-wrapper">
     <h1>Docfy</h1>
     <form action="/register" method="POST">
@@ -14,8 +8,7 @@
       <input type="email" name="email" placeholder="Digite seu e-mail">
       <input type="password" name="password" placeholder="Digite sua senha">
       <button type="submit">Criar conta</button>
-      <a href="signin.html">Já tenho conta</a>
+      <a href="/">Já tenho conta</a>
     </form>
   </div>
-</body>
-</html>
+{% endblock %}
