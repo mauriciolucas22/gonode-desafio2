@@ -31,4 +31,28 @@ module.exports = {
     req.flash('success', 'Usuário cadastrado');
     return res.redirect('/');
   },
+
+  async authenticate(req, res) {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      req.flash('error', 'Usuário inexistente');
+      return req.redirect('/');
+    }
+
+    // compara senha
+    if (!await bcrypt.compare(password, user.password)) {
+      req.flash('error', 'Senha inválida');
+      return res.redirect('/');
+    }
+
+    // salva na session
+    req.session.user = user;
+
+    return req.session.save(() => {
+      res.redirect('/dashboard');
+    });
+  },
 };
