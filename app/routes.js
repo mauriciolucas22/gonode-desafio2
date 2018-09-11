@@ -2,6 +2,8 @@ const express = require('express');
 
 const routes = express.Router();
 
+const authMiddleware = require('./middlewares/auth');
+
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 
@@ -28,6 +30,7 @@ routes.post('/authenticate', authController.authenticate);
 /**
  * Dashboard
  */
+routes.use('/dashboard', authMiddleware);
 routes.get('/dashboard', dashboardController.index);
 
 module.exports = routes;
