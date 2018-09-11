@@ -16,11 +16,11 @@ routes.get((req, res, next) => {
 });
 
 /**
- * login e signup
+ * login signup e signout
  */
 routes.get('/', authController.signin);
 routes.get('/signup', authController.signup);
-
+routes.get('/signout', authController.signout);
 /**
  * Auth
  */
