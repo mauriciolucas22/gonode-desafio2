@@ -34,4 +34,19 @@ routes.post('/authenticate', authController.authenticate);
 routes.use('/dashboard', authMiddleware);
 routes.get('/dashboard', dashboardController.index);
 
+/**
+ * handle error
+ */
+
+routes.use((req, res) => res.render('errors/404'));
+
+routes.use((err, req, res, _next) => {
+  res.status(err.status || 500);
+
+  return res.render('errors/index', {
+    message: err.message,
+    error: process.env.NODE_ENV === 'development' ? err : {},
+  });
+});
+
 module.exports = routes;
