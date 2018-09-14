@@ -40,6 +40,7 @@ routes.get('/dashboard', dashboardController.index);
  */
 routes.use('/project', authMiddleware);
 routes.get('/project', projectController.index);
+routes.post('/project/create', projectController.store);
 
 /**
  * handle error

@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Document.associate = (models) => {
-    Document.belogsTo(models.Project);
+    Document.belongsTo(models.Project);
   };
 
   return Document;

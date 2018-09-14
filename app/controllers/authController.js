@@ -44,7 +44,7 @@ module.exports = {
 
       if (!user) {
         req.flash('error', 'Usuário inexistente');
-        return req.redirect('/');
+        return res.redirect('/');
       }
 
       // compara senha
