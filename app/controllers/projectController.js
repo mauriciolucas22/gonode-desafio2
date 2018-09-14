@@ -1,4 +1,4 @@
-const { Project } = require('../models');
+const { Project, Document } = require('../models');
 
 module.exports = {
   index(req, res) {
@@ -7,14 +7,28 @@ module.exports = {
 
   async store(req, res, next) {
     try {
-      await Project.create({
+      const project = await Project.create({
         ...req.body,
         UserId: req.session.user.id,
       });
 
       req.flash('success', 'Projeto Criado');
 
-      return res.redirect('/project');
+      return res.redirect(`/project/${project.id}`);
+    } catch (err) {
+      return next(err);
+    }
+  },
+
+  async show(req, res, next) {
+    try {
+      const documents = await Document.findAll({
+        where: {
+          ProjectId: req.params.id,
+        },
+      });
+
+      return res.render('project', { documents, projectId: req.params.id });
     } catch (err) {
       return next(err);
     }

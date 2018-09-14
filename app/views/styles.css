@@ -70,6 +70,7 @@ input:focus, textarea:focus {
 
 .btn.btn-danger {
   background: #E06666;
+  display: flex;
 }
 
 .btn.btn-danger:hover {
