@@ -8,7 +8,7 @@ const guestMiddleware = require('./middlewares/guest');
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
 const projectController = require('./controllers/projectController');
-const documentController= require('./controllers/documentController');
+const documentController = require('./controllers/documentController');
 
 // middleware usado para enviar flash para todas as rotas
 routes.get((req, res, next) => {
@@ -47,6 +47,7 @@ routes.post('/project/create', projectController.store);
 /**
  * Document
  */
+routes.get('/project/:projectId/document/:id', documentController.show);
 routes.post('/project/:projectId/document/create', documentController.store);
 
 /**

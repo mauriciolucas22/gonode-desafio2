@@ -17,4 +17,27 @@ module.exports = {
       return next(err);
     }
   },
+
+  async show(req, res, next) {
+    try {
+      const { projectId, id } = req.params;
+
+      // pbtem os documentos desse projeto
+      const document = await Document.findById(id);
+
+      // todos os docs
+      const documents = await Document.findAll({
+        where: { ProjectId: projectId },
+      });
+
+      return res.render('project', {
+        document,
+        documents,
+        projectId,
+        activeDocument: document.id,
+      });
+    } catch (err) {
+      return next(err);
+    }
+  },
 };
