@@ -33,4 +33,37 @@ module.exports = {
       return next(err);
     }
   },
+
+  async update(req, res, next) {
+    try {
+      const { projectId } = req.params;
+
+      // busca o projecto
+      const project = await Project.findById(projectId);
+
+      // atualiza
+      await project.update(req.body);
+
+      // envia msg
+      req.flash('success', 'Projeto atualizado');
+
+      return res.redirect(`/project/${projectId}`);
+    } catch (err) {
+      return next(err);
+    }
+  },
+
+  async destroy(req, res, next) {
+    try {
+      await Project.destroy({
+        where: {
+          id: req.params.projectId,
+        },
+      });
+
+      return res.redirect('/dashboard');
+    } catch (err) {
+      return next(err);
+    }
+  },
 };

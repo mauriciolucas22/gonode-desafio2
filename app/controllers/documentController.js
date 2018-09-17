@@ -59,4 +59,18 @@ module.exports = {
       return next(err);
     }
   },
+
+  async destroy(req, res, next) {
+    try {
+      await Document.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      return res.redirect(`/project/${req.params.projectId}`);
+    } catch (err) {
+      return next(err);
+    }
+  },
 };

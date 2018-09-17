@@ -43,6 +43,8 @@ routes.use('/project', authMiddleware);
 // routes.get('/project', projectController.index);
 routes.get('/project/:id', projectController.show);
 routes.post('/project/create', projectController.store);
+routes.put('/project/:projectId', projectController.update);
+routes.delete('/project/:projectId', projectController.destroy);
 
 /**
  * Document
@@ -50,6 +52,7 @@ routes.post('/project/create', projectController.store);
 routes.get('/project/:projectId/document/:id', documentController.show);
 routes.post('/project/:projectId/document/create', documentController.store);
 routes.put('/project/:projectId/document/:id', documentController.update);
+routes.delete('/project/:projectId/document/:id', documentController.destroy);
 
 /**
  * handle error

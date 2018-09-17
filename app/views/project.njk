@@ -22,7 +22,9 @@
         <header>
           <h2>Exemplo de projeto</h2>
           <div class="addon">
-            <a href="" class="btn btn-danger">Excluir projeto</a>
+            <form action="/project/{{projectId}}?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-danger">Excluir projeto</button>
+            </form>
           </div>
         </header>
 
@@ -43,8 +45,12 @@
           <article>
             <div class="project-header">
               <h1>{{currentDocument.title}}</h1>
-              <a href="#">Remover seção</a>
-              <a href="#" data-modal-open="#edit-document">Editar seção</a>
+              {% if currentDocument %}
+                <form action="/project/{{projectId}}/document/{{currentDocument.id}}?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-danger btn-exluir-document">Remover seção</button>
+                </form>
+                <a href="#" data-modal-open="#edit-document" style="color: #2099c4;">Editar seção</a>
+              {% endif %}
             </div>
             <p>{{currentDocument.formattedContent | safe}}</p>
           </article>

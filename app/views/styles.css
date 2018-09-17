@@ -424,3 +424,28 @@ input:focus, textarea:focus {
 .modal-content a:hover {
   background: #ccc;
 }
+
+.btn-exluir-document {
+  color: #CC6161;
+  font-size: 15px;
+  background: transparent !important;
+  border: 0;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.btn-exluir-document::after {
+  border-color: transparent;
+}
+
+pre {
+  border-radius: 5px;
+}
+
+.addon {
+  display: flex;
+}
+
+.btn {
+  margin-right: 5px;
+}
