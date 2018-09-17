@@ -49,6 +49,7 @@ routes.post('/project/create', projectController.store);
  */
 routes.get('/project/:projectId/document/:id', documentController.show);
 routes.post('/project/:projectId/document/create', documentController.store);
+routes.put('/project/:projectId/document/:id', documentController.update);
 
 /**
  * handle error
