@@ -23,19 +23,27 @@ module.exports = {
     try {
       const { projectId, id } = req.params;
 
-      // pbtem os documentos desse projeto
+      // obtem os documentos desse projeto
       const currentDocument = await Document.findById(id);
 
       // todos os docs
       const documents = await Document.findAll({
-        include: [Project],
         where: { ProjectId: projectId },
+      });
+
+      // projeto
+      const project = await Project.find({
+        where: {
+          id: projectId,
+        },
       });
 
       return res.render('project', {
         currentDocument,
         documents,
         projectId,
+        projectTitle: project.title,
+        userName: req.session.user.name,
         activeDocument: currentDocument.id,
       });
     } catch (err) {

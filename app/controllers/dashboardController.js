@@ -1,4 +1,4 @@
-const { Project, User } = require('../models');
+const { Project } = require('../models');
 
 module.exports = {
   async index(req, res, next) {
@@ -9,13 +9,10 @@ module.exports = {
         },
       });
 
-      const user = await User.find({
-        where: {
-          id: req.session.user.id,
-        },
+      return res.render('dashboard', {
+        projects,
+        userName: req.session.user.name,
       });
-
-      return res.render('dashboard', { projects, user });
     } catch (err) {
       return next(err);
     }
