@@ -20,8 +20,9 @@
     <section id="main">
       <div class="container">
         <header>
-          <h2>Exemplo de projeto</h2>
+          <h2>{{documents.Project.title}}o</h2>
           <div class="addon">
+            <a href="#" data-modal-open="#edit-project" class="btn" >Editar título</a>
             <form action="/project/{{projectId}}?_method=DELETE" method="POST">
               <button type="submit" class="btn btn-danger">Excluir projeto</button>
             </form>
@@ -66,6 +67,14 @@
 
             <button type="submit">Salvar Documento</button>
             <a href="#" data-modal-close="#edit-document">CANCELAR</a>
+          </form>
+        </div>
+
+        <div class="modal" id="edit-project">
+          <form class="modal-content" method="POST" action="/project/{{projectId}}?_method=PUT">
+            <input type="text" name="title" placeholder="{{project.title}}" value="{{project.title}}">
+            <button type="submit">Salvar</button>
+            <a href="#" data-modal-close="#edit-project">CANCELAR</a>
           </form>
         </div>
       </div>

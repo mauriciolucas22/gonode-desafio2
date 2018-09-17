@@ -1,4 +1,4 @@
-const { Document } = require('../models');
+const { Document, Project } = require('../models');
 
 module.exports = {
   async store(req, res, next) {
@@ -28,6 +28,7 @@ module.exports = {
 
       // todos os docs
       const documents = await Document.findAll({
+        include: [Project],
         where: { ProjectId: projectId },
       });
 
