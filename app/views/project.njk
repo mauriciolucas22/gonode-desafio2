@@ -30,7 +30,7 @@
           <nav>
             <div class="sessions">
               {% for document in documents %}
-                <a href="/project/{{projectId}}/document/{{document.id}}" class="{% if document.id == activeDocument%}active{% endif %}">{{document.title}}</a>
+                <a href="/project/{{projectId}}/document/{{document.id}}" class="{% if document.id == activeDocument%}active{% endif %}">{{document.excerpt}}</a>
               {% endfor %}
             </div>
 
@@ -46,7 +46,7 @@
               <a href="#">Remover seção</a>
               <a href="#" data-modal-open="#edit-document">Editar seção</a>
             </div>
-            <p>{{currentDocument.content}}</p>
+            <p>{{currentDocument.formattedContent | safe}}</p>
           </article>
         </section>
 
