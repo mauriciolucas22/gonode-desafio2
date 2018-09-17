@@ -7,6 +7,7 @@ module.exports = {
 
       const document = await Document.create({
         ...req.body,
+        content: '',
         ProjectId: projectId,
       });
 
