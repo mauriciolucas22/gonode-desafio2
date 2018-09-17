@@ -12,7 +12,6 @@ const routes = require('./app/routes');
 const sessionConfig = require('./config/session');
 
 const PORT = 3000;
-const HOST = '127.0.0.1';
 
 // const { User } = require('./app/models');
 
@@ -36,4 +35,4 @@ app.use(methodOverride('_method'));
 
 app.use('/', routes);
 
-app.listen(PORT, HOST);
+app.listen(PORT);
